@@ -18,7 +18,6 @@ export class PropiedadesClienteComponent implements OnInit{
       this.propService.obtenerPropiedades().subscribe(
         response => {
           this.propiedades = response.filter(p => p.Disponibilidad === 'Disponible')
-          console.log(this.propiedades)
         }
       )
   }

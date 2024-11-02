@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Inquilino } from '../models/inquilino';
 import { InquilinoService } from '../inquilino.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-listar-inquilinos',
@@ -17,23 +18,22 @@ export class ListarInquilinosComponent implements OnInit{
       this.obtenerInquilinos()
   }
 
-  obtenerInquilinos() {
+  obtenerInquilinos() : void{
     this.inquilinoService.obtenerInquilinos().subscribe(
       response => {
         this.inquilinos = response
-        console.log(response)
       }
     )
   }
 
-  seleccionarInquilino(inquilino: Inquilino) {
+  seleccionarInquilino(inquilino: Inquilino) : void {
     this.inquilinoSeleccionado = {...inquilino}
   }
-  cancelarEdicion() {
+  cancelarEdicion() : void{
     this.inquilinoSeleccionado = null
   }
 
-  actualizarInquilino() {
+  actualizarInquilino() : void{
     if(this.inquilinoSeleccionado) {
       this.inquilinoService.actualizarInquilino(this.inquilinoSeleccionado.idInquilino,this.inquilinoSeleccionado).subscribe(
         () => {
@@ -45,15 +45,23 @@ export class ListarInquilinosComponent implements OnInit{
     }
   }
 
-  eliminarInquilino(id: number) {
-    if (confirm('¿Estás seguro de que deseas eliminar este propietario?')) {
-      this.inquilinoService.eliminarInquilino(id).subscribe(
-        () => {
-          this.inquilinos = this.inquilinos.filter(user => user.idInquilino !== id);
-          console.log('Inquilino eliminado');
-        },
-        error => console.error('Error al eliminar inquilino:', error)
-      );
-    }
+  eliminarInquilino(id: number) : void{
+    Swal.fire({
+      title: '¿Estás seguro?',
+        text: "Esta acción no se puede deshacer.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.inquilinoService.eliminarInquilino(id).subscribe(
+          () => {
+            this.inquilinos = this.inquilinos.filter(user => user.idInquilino !== id);
+          },
+          error => console.error('Error al eliminar inquilino:', error)
+        );
+      }
+    })
   }
 }

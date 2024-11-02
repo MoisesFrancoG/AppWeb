@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Propietario } from '../models/propietario';
 import { PropietarioService } from '../propietario.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-listar-propietarios',
@@ -17,25 +18,24 @@ export class ListarPropietariosComponent implements OnInit{
       this.obtenerPropietarios()
     }
     
-    obtenerPropietarios() {
+    obtenerPropietarios():void {
       this.propietarioService.obtenerPropietarios().subscribe(
         response => {
           this.propietarios = response
-          console.log(response);
         },
         error => console.error("Error al obtener los propietarios: "+error)
       )
     }
 
-    seleccionarPropietario(propietario: Propietario) {
+    seleccionarPropietario(propietario: Propietario) : void {
       this.propietarioSeleccionado = { ...propietario }; 
     }
   
-    cancelarEdicion() {
+    cancelarEdicion(): void {
       this.propietarioSeleccionado = null; 
     }
 
-    actualizarPropietario() {
+    actualizarPropietario():void {
       if (this.propietarioSeleccionado) {
         this.propietarioService.actualizarPropietario(this.propietarioSeleccionado.idPropietario, this.propietarioSeleccionado).subscribe(
           () => {
@@ -48,14 +48,27 @@ export class ListarPropietariosComponent implements OnInit{
     }
   
     eliminarPropietario(id: number) {
-      if (confirm('¿Estás seguro de que deseas eliminar este propietario?')) {
-        this.propietarioService.eliminarPropietario(id).subscribe(
-          () => {
-            this.propietarios = this.propietarios.filter(user => user.idPropietario !== id);
-            console.log('Propietario eliminado');
-          },
-          error => console.error('Error al eliminar propietario:', error)
-        );
-      }
+      Swal.fire({
+        title: '¿Estás seguro?',
+        text: "Esta acción no se puede deshacer.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.propietarioService.eliminarPropietario(id).subscribe(
+            () => {
+              this.propietarios = this.propietarios.filter(user => user.idPropietario !== id);
+              Swal.fire(
+                'Eliminado',
+                'El propietario ha sido eliminado con éxito.',
+                'success'
+              );
+            },
+            error => console.error('Error al eliminar propietario:', error)
+          );
+        }
+      });
     }
 }

@@ -3,6 +3,7 @@ import { Inquilino } from '../models/inquilino';
 import { InquilinoService } from '../inquilino.service';
 import { Propiedad } from '../../propiedades/models/propiedad';
 import { PropiedadService } from '../../propiedades/propiedad.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registrar-inquilino',
@@ -28,8 +29,15 @@ export class RegistrarInquilinoComponent implements OnInit {
   ngOnInit(): void {
     this.propService.obtenerPropiedades().subscribe((response) => {
       this.propiedades = response;
-      console.log(response);
     });
+  }
+
+  soloNumeros(event: KeyboardEvent) {
+    const charCode = event.key.charCodeAt(0);
+    if (charCode < 48 || charCode > 57) {
+      // solo números (0-9)
+      event.preventDefault();
+    }
   }
 
   agregarInquilino() {
@@ -38,9 +46,15 @@ export class RegistrarInquilinoComponent implements OnInit {
     const mm = String(today.getMonth() + 1).padStart(2, '0');
     const dd = String(today.getDate()).padStart(2, '0');
     this.nuevoInquilino.FechaRegistro = `${dd}-${mm}-${yyyy}`;
-    this.inquilinoService.agregarInquilino(this.nuevoInquilino)
+    this.inquilinoService
+      .agregarInquilino(this.nuevoInquilino)
       .subscribe((response) => {
-        console.log('Inquilino agregado: ', response);
+        Swal.fire({
+          icon: 'success',
+          title: 'Inquilino agregado',
+          text: 'El Inquilino ha sido agregado exitosamente',
+          confirmButtonText: 'Aceptar'
+        });
         this.nuevoInquilino = {
           idInquilino: 0,
           Nombre: '',

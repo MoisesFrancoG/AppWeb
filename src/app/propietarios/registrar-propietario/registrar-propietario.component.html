@@ -15,14 +15,17 @@
     required
   />
   <br />
-  <label>Teléfono:</label>
-  <input
-    [(ngModel)]="nuevoPropietario.Telefono"
-    name="telefono"
-    type="tel"
-    required
-  />
-  <br />
-
-  <button type="submit">Agregar Propietario</button>
+    <label>Teléfono:</label>
+    <input
+      type="text"
+      [(ngModel)]="nuevoPropietario.Telefono"
+      name="telefono"
+      required
+      pattern="^[0-9]{10}$"
+      maxlength="10"
+      #telefono="ngModel"
+      (keypress)="soloNumeros($event)"
+    />
+<br>
+  <button type="submit" [disabled]="telefono.invalid">Agregar Propietario</button>
 </form>

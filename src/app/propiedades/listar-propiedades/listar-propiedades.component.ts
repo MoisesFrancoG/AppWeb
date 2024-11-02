@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PropiedadService } from '../propiedad.service';
 import { Propiedad } from '../models/propiedad';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-listar-propiedades',
@@ -37,14 +38,22 @@ export class ListarPropiedadesComponent implements OnInit {
   }
 
   eliminarPropiedad(id: number): void {
-    if(confirm('Quieres borrar')) {
-      this.propiedadService.eliminarPropiedad(id).subscribe(
-        () => {
-          console.log('Propiedad eliminada');
-          this.propiedades = this.propiedades.filter(p => p.idPropiedad !== id);
-        },
-        error => console.error('Error al eliminar propiedad:', error)
-      );
-    }
+    Swal.fire({
+      title: '¿Estás seguro?',
+        text: "Esta acción no se puede deshacer.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if(result.isConfirmed) {
+        this.propiedadService.eliminarPropiedad(id).subscribe(
+          () => {
+            this.propiedades = this.propiedades.filter(p => p.idPropiedad !== id);
+          },
+          error => console.error('Error al eliminar propiedad:', error)
+        );
+      }
+    })
   }
 }
