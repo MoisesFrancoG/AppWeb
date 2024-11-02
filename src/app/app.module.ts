@@ -8,6 +8,7 @@ import { PropietariosModule } from './propietarios/propietarios.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { PropiedadesModule } from './propiedades/propiedades.module';
+import { InquilinosModule } from './inquilinos/inquilinos.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { PropiedadesModule } from './propiedades/propiedades.module';
     AppRoutingModule,
     PropietariosModule,
     PropiedadesModule,
+    InquilinosModule,
     HttpClientModule,
     FormsModule
   ],

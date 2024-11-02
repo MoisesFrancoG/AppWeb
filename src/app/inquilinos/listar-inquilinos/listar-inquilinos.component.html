@@ -1,1 +1,32 @@
-<p>listar-inquilinos works!</p>
+<h2>Usuarios Registrados</h2>
+<div *ngFor="let user of inquilinos">
+    <ul>
+        <li>{{user.Nombre}}</li>
+        <li>{{user.Email}}</li>
+        <li>{{user.Telefono}}</li>
+        <li>{{user.FechaRegistro}}</li>
+        <li>{{user.EstanciaRegistrada}}</li>
+    </ul>
+    <button (click)="seleccionarInquilino(user)">Editar Informacion</button>
+    <button (click)="eliminarInquilino(user.idInquilino)">Eliminar Inquilino</button>
+</div>
+
+<div *ngIf="inquilinoSeleccionado">
+    <h3>Editar Inquilino</h3>
+    <form (ngSubmit)="actualizarInquilino()">
+        <label>Nombre: </label>
+        <input type="text" name="nombre" [(ngModel)]="inquilinoSeleccionado.Nombre" required>
+        <br>
+
+        <label>Email: </label>
+        <input type="text" name="email" [(ngModel)]="inquilinoSeleccionado.Email" required>
+        <br>
+
+        <label>Telefono: </label>
+        <input type="text" name="telefono" [(ngModel)]="inquilinoSeleccionado.Telefono" required>
+        <br>
+
+        <button type="submit">Actualizar</button>
+        <button type="button" (click)="cancelarEdicion()">Cancelar</button>
+    </form>
+</div>

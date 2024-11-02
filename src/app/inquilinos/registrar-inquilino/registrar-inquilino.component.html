@@ -1,1 +1,21 @@
-<p>registrar-inquilino works!</p>
+<form (ngSubmit)="agregarInquilino()">
+<label>Nombre: </label>
+<input type="text" [(ngModel)]="nuevoInquilino.Nombre" name="nombre" required>
+<br>
+
+<label>Email: </label>
+<input type="text" [(ngModel)]="nuevoInquilino.Email" name="email" required>
+<br>
+
+<label>Telefono: </label>
+<input type="text" [(ngModel)]="nuevoInquilino.Telefono" name="telefono" required>
+<br>
+
+<label>Estancia Seleccionada: </label>
+<select [(ngModel)]="nuevoInquilino.EstanciaRegistrada" name="estanciaRegistrada" required>
+    <option *ngFor="let item of propiedades" [value]="item.idPropiedad">{{item.idPropiedad}}</option>
+</select>
+<br>
+
+<button type="submit">Agregar Inquilino</button>
+</form>
