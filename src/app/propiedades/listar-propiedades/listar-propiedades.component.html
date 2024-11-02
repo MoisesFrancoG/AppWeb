@@ -1,0 +1,23 @@
+<div *ngFor="let propiedad of propiedades">
+  <p>Direccion: {{propiedad.Direccion}}</p>
+  <p>Precio: {{propiedad.PrecioPeriodo}}</p>
+  <p>Periodo por Renta: {{propiedad.PeriodoRenta}}</p>
+  <p>Capacidad de Inquilinos: {{propiedad.Capacidad}}</p>
+  <p>Disponibilidad: {{propiedad.Disponibilidad}}</p>
+  
+  <div>
+    <label>Cambiar Disponibilidad:</label>
+    <select
+      [(ngModel)]="propiedad.Disponibilidad"
+      (change)="actualizarDisponibilidad(propiedad)"
+      class="form-control"
+    >
+      <option value="Disponible">Disponible</option>
+      <option value="No Disponible">No Disponible</option>
+    </select>
+  </div>
+  <button (click)="eliminarPropiedad(propiedad.idPropiedad)">
+    Eliminar
+  </button>
+</div>
+  

@@ -1,0 +1,48 @@
+<table border="1">
+    <tr>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Email</th>
+      <th>Teléfono</th>
+      <th>Número de Propiedades</th>
+      <th>Fecha de Registro</th>
+      <th>Acciones</th>
+    </tr>
+    <tr *ngFor="let user of propietarios">
+      <td>{{user.idPropietario}}</td>
+      <td>{{user.Nombre}}</td>
+      <td>{{user.Email}}</td>
+      <td>{{user.Telefono}}</td>
+      <td>{{user.NumeroPropiedades}}</td>
+      <td>{{user.FechaRegistro}}</td>
+      <td>
+        <button (click)="seleccionarPropietario(user)">Editar</button>
+        <button (click)="eliminarPropietario(user.idPropietario)">Eliminar</button>
+      </td>
+    </tr>
+  </table>
+
+  <div *ngIf="propietarioSeleccionado">
+    <h3>Editar Propietario</h3>
+    <form (ngSubmit)="actualizarPropietario()">
+      <div>
+        <label>Nombre:</label>
+        <input type="text" [(ngModel)]="propietarioSeleccionado.Nombre" name="nombre" required>
+      </div>
+      <div>
+        <label>Email:</label>
+        <input type="email" [(ngModel)]="propietarioSeleccionado.Email" name="email" required>
+      </div>
+      <div>
+        <label>Teléfono:</label>
+        <input type="text" [(ngModel)]="propietarioSeleccionado.Telefono" name="telefono" required>
+      </div>
+      <div>
+        <label>Número de Propiedades:</label>
+        <input type="number" [(ngModel)]="propietarioSeleccionado.NumeroPropiedades" name="numeroPropiedades" required>
+      </div>
+      <button type="submit">Actualizar</button>
+      <button type="button" (click)="cancelarEdicion()">Cancelar</button>
+    </form>
+  </div>
+  

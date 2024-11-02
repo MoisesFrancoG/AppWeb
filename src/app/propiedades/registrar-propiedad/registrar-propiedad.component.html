@@ -1,0 +1,73 @@
+<form (ngSubmit)="agregarPropiedad()">
+  <label>Dirección:</label>
+  <input
+    [(ngModel)]="nuevaPropiedad.Direccion"
+    name="direccion"
+    type="text"
+    required
+  />
+  <br />
+
+  <label>Tipo de Propiedad:</label>
+  <input
+    [(ngModel)]="nuevaPropiedad.TipoPropiedad"
+    name="tipoPropiedad"
+    type="text"
+    required
+  />
+  <br />
+
+  <label>Precio por Periodo:</label>
+  <input
+    [(ngModel)]="nuevaPropiedad.PrecioPeriodo"
+    name="precioPeriodo"
+    type="number"
+    required
+  />
+  <br />
+
+  <label>Periodo de Renta:</label>
+  <input
+    [(ngModel)]="nuevaPropiedad.PeriodoRenta"
+    name="periodoRenta"
+    type="text"
+    required
+  />
+  <br />
+
+  <label>Capacidad de Inquilinos:</label>
+  <input
+    [(ngModel)]="nuevaPropiedad.Capacidad"
+    name="capacidad"
+    type="number"
+    min="1"
+    required
+  />
+  <br />
+
+  <label>Disponibilidad:</label>
+  <select
+    [(ngModel)]="nuevaPropiedad.Disponibilidad"
+    name="disponibilidad"
+    required
+  >
+    <option value="Disponible">Disponible</option>
+    <option value="No Disponible">No disponible</option>
+  </select>
+
+  <br />
+
+  <label>Propietario ID:</label>
+  <select
+    [(ngModel)]="nuevaPropiedad.IdPropietario"
+    name="idPropietario"
+    required
+  >
+    <option *ngFor="let user of propietarios" [value]="user.idPropietario">
+      {{ user.idPropietario }}
+    </option>
+  </select>
+  <br />
+
+  <button type="submit">Agregar Propiedad</button>
+</form>
