@@ -7,6 +7,7 @@ import { RegistrarInquilinoComponent } from './inquilinos/registrar-inquilino/re
 import { ListarInquilinosComponent } from './inquilinos/listar-inquilinos/listar-inquilinos.component';
 import { RegistrarPropiedadComponent } from './propiedades/registrar-propiedad/registrar-propiedad.component';
 import { ListarPropiedadesComponent } from './propiedades/listar-propiedades/listar-propiedades.component';
+import { PropiedadesClienteComponent } from './propiedades/propiedades-cliente/propiedades-cliente.component';
 const routes: Routes = [
   { path : '', component: HomeComponent},
   { path : 'registrar_propietarios', component: RegistrarPropietarioComponent},
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path : 'registrar_inquilino', component: RegistrarInquilinoComponent},
   { path : 'listar_inquilinos', component : ListarInquilinosComponent},
   { path : 'registrar_prop', component : RegistrarPropiedadComponent},
-  {path : 'listar_prop', component : ListarPropiedadesComponent}
+  { path : 'listar_prop', component : ListarPropiedadesComponent},
+  { path : 'ver_prop', component : PropiedadesClienteComponent}
 ];
 
 @NgModule({

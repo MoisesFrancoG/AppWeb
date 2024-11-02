@@ -26,4 +26,8 @@ export class PropietarioService {
   eliminarPropietario(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+  obtenerPropietarioPorId(id: number): Observable<Propietario> {
+    return this.http.get<Propietario>(`${this.apiUrl}/${id}`);
+  }
 }

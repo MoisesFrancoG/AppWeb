@@ -1,0 +1,11 @@
+<div>
+    <div *ngFor="let prop of propiedades">
+        <p>{{prop.Direccion}}</p>
+        <p>{{prop.TipoPropiedad}}</p>
+        <p>{{prop.PrecioPeriodo}}</p>
+        <p>{{prop.PeriodoRenta}}</p>
+        <p>{{prop.Capacidad}}</p>
+        <p>{{prop.Disponibilidad}}</p>
+        <button (click)="obtenerPropietario(prop.IdPropietario)">Mostrar Informacion Propietario</button>
+    </div>
+</div>
