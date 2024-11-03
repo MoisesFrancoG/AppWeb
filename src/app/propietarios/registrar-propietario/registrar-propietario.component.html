@@ -1,31 +1,32 @@
-<form (ngSubmit)="agregarPropietario()">
-  <label>Nombre:</label>
-  <input
+<div id="cont-reg">
+<form (ngSubmit)="agregarPropietario()" class="box">
+  <label class="label">Nombre:</label>
+  <input class="input is-link"
     [(ngModel)]="nuevoPropietario.Nombre"
     name="nombre"
     type="text"
     required
   />
   <br />
-  <label>Email:</label>
-  <input
+  <label class="label">Email:</label>
+  <input class="input is-link"
     [(ngModel)]="nuevoPropietario.Email"
     name="email"
     type="email"
     required
   />
   <br />
-    <label>Teléfono:</label>
-    <input
+    <label class="label">Teléfono:</label>
+    <input class="input is-link"
       type="text"
       [(ngModel)]="nuevoPropietario.Telefono"
       name="telefono"
       required
       pattern="^[0-9]{10}$"
       maxlength="10"
-      #telefono="ngModel"
       (keypress)="soloNumeros($event)"
     />
 <br>
-  <button type="submit" [disabled]="telefono.invalid">Agregar Propietario</button>
+  <button type="submit" class="button is-link is-outlined mt-5">Agregar Propietario</button>
 </form>
+</div>

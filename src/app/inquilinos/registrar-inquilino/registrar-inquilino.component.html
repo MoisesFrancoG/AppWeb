@@ -1,41 +1,46 @@
-<form (ngSubmit)="agregarInquilino()">
-  <label>Nombre: </label>
-  <input
-    type="text"
-    [(ngModel)]="nuevoInquilino.Nombre"
-    name="nombre"
-    required
-  />
-  <br />
-
-  <label>Email: </label>
-  <input type="text" [(ngModel)]="nuevoInquilino.Email" name="email" required />
-  <br />
-
-  <label>Telefono: </label>
-  <input
-    type="text"
-    [(ngModel)]="nuevoInquilino.Telefono"
-    name="telefono"
-    required
-    pattern="^[0-9]{10}$"
-    maxlength="10"
-    #telefono="ngModel"
-    (keypress)="soloNumeros($event)"
-  />
-  <br />
-
-  <label>Estancia Seleccionada: </label>
-  <select
-    [(ngModel)]="nuevoInquilino.EstanciaRegistrada"
-    name="estanciaRegistrada"
-    required
-  >
-    <option *ngFor="let item of propiedades" [value]="item.idPropiedad">
-      {{ item.idPropiedad }}
-    </option>
-  </select>
-  <br />
-
-  <button type="submit" [disabled]="telefono.invalid">Agregar Inquilino</button>
-</form>
+<div id="cont">
+  <form (ngSubmit)="agregarInquilino()" class="box">
+    <label class="label"> Nombre: </label>
+    <input class="input is-dark"
+      type="text"
+      [(ngModel)]="nuevoInquilino.Nombre"
+      name="nombre"
+      required
+    />
+    <br />
+  
+    <label class="label"> Email: </label>
+    <input class="input is-dark" type="text" [(ngModel)]="nuevoInquilino.Email" name="email" required />
+    <br />
+  
+    <label class="label"> Telefono: </label>
+    <input class="input is-dark"
+      type="text"
+      [(ngModel)]="nuevoInquilino.Telefono"
+      name="telefono"
+      required
+      pattern="^[0-9]{10}$"
+      maxlength="10"
+      (keypress)="soloNumeros($event)"
+    />
+    <br />
+  
+    <label class="label"> Estancia Seleccionada: </label>
+    <div class="control">
+      <div class="select is-dark">
+        <select
+          [(ngModel)]="nuevoInquilino.EstanciaRegistrada"
+          name="estanciaRegistrada"
+          required
+        >
+          <option *ngFor="let item of propiedades" [value]="item.idPropiedad">
+            {{ item.idPropiedad }}
+          </option>
+        </select>
+        <br />
+      </div>
+    </div>
+  
+    <button type="submit" class="button is-black mt-3">Agregar Inquilino</button>
+  </form>
+</div>

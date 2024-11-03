@@ -1,12 +1,14 @@
-.container {
-    margin-top: 20px;
-  }
-  
-  .card {
-    width: 100%;
-  }
-  
-  .card-title {
-    font-weight: bold;
-  }
-  
+#cont {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px; 
+  padding: 20px; 
+}
+
+.card {
+  border: 2px solid #0919fd;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(20, 5, 154, 0.849); 
+}

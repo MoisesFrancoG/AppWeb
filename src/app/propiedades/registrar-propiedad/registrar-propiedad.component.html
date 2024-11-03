@@ -1,6 +1,7 @@
-<form (ngSubmit)="agregarPropiedad()">
-  <label>Dirección:</label>
-  <input
+<div id="cont">
+<form (ngSubmit)="agregarPropiedad()" class="box">
+  <label class="label">Dirección:</label>
+  <input class="input is-link is-hovered"
     [(ngModel)]="nuevaPropiedad.Direccion"
     name="direccion"
     type="text"
@@ -8,8 +9,8 @@
   />
   <br />
 
-  <label>Tipo de Propiedad:</label>
-  <input
+  <label class="label">Tipo de Propiedad:</label>
+  <input class="input is-link is-hovered"
     [(ngModel)]="nuevaPropiedad.TipoPropiedad"
     name="tipoPropiedad"
     type="text"
@@ -17,8 +18,8 @@
   />
   <br />
 
-  <label>Precio por Periodo:</label>
-  <input
+  <label class="label">Precio por Periodo:</label>
+  <input class="input is-link is-hovered"
     [(ngModel)]="nuevaPropiedad.PrecioPeriodo"
     name="precioPeriodo"
     type="number"
@@ -28,8 +29,8 @@
   />
   <br />
 
-  <label>Periodo de Renta:</label>
-  <input
+  <label class="label">Periodo de Renta:</label>
+  <input class="input is-link is-hovered"
     [(ngModel)]="nuevaPropiedad.PeriodoRenta"
     name="periodoRenta"
     type="text"
@@ -37,8 +38,8 @@
   />
   <br />
 
-  <label>Capacidad de Inquilinos:</label>
-  <input
+  <label class="label">Capacidad de Inquilinos:</label>
+  <input class="input is-link is-hovered"
     [(ngModel)]="nuevaPropiedad.Capacidad"
     name="capacidad"
     type="number"
@@ -48,29 +49,35 @@
   />
   <br />
 
-  <label>Disponibilidad:</label>
-  <select
-    [(ngModel)]="nuevaPropiedad.Disponibilidad"
-    name="disponibilidad"
-    required
-  >
-    <option value="Disponible">Disponible</option>
-    <option value="No Disponible">No disponible</option>
-  </select>
+  <label class="label">Disponibilidad:</label>
+  <div class="control">
+    <div class="select is-link">
+      <select
+      [(ngModel)]="nuevaPropiedad.Disponibilidad"
+      name="disponibilidad"
+      required
+    >
+      <option value="Disponible">Disponible</option>
+      <option value="No Disponible">No disponible</option>
+    </select>
+    </div>
+  </div>
 
-  <br />
+  <label class="label">Propietario ID:</label>
+  <div class="control">
+    <div class="select is-link">
+      <select
+        [(ngModel)]="nuevaPropiedad.IdPropietario"
+        name="idPropietario"
+        required
+      >
+        <option *ngFor="let user of propietarios" [value]="user.idPropietario">
+          {{ user.idPropietario }}
+        </option>
+      </select>
+    </div>
+  </div>
 
-  <label>Propietario ID:</label>
-  <select
-    [(ngModel)]="nuevaPropiedad.IdPropietario"
-    name="idPropietario"
-    required
-  >
-    <option *ngFor="let user of propietarios" [value]="user.idPropietario">
-      {{ user.idPropietario }}
-    </option>
-  </select>
-  <br />
-
-  <button type="submit">Agregar Propiedad</button>
+  <button type="submit" class="button is-link is-outlined mt-3">Agregar Propiedad</button>
 </form>
+</div>

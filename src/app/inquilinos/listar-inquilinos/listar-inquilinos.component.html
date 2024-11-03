@@ -1,33 +1,38 @@
-<h2>Usuarios Registrados</h2>
-<div *ngFor="let user of inquilinos">
-    <ul>
-        <h3>Usuario Registrado: {{user.idInquilino}}</h3>
-        <li>{{user.Nombre}}</li>
-        <li>{{user.Email}}</li>
-        <li>{{user.Telefono}}</li>
-        <li>{{user.FechaRegistro}}</li>
-        <li>{{user.EstanciaRegistrada}}</li>
-    </ul>
-    <button (click)="seleccionarInquilino(user)">Editar Informacion</button>
-    <button (click)="eliminarInquilino(user.idInquilino)">Eliminar Inquilino</button>
+<h2 class="title is-1 has-text-centered">Usuarios Registrados</h2>
+<div id="cont">
+    <div *ngFor="let user of inquilinos" class="card">
+        <ul>
+            <h3>Usuario Registrado: {{user.idInquilino}}</h3>
+            <li>{{user.Nombre}}</li>
+            <li>{{user.Email}}</li>
+            <li>{{user.Telefono}}</li>
+            <li>{{user.FechaRegistro}}</li>
+            <li>Registrado en Estancia: {{user.EstanciaRegistrada}}</li>
+        </ul>
+        <button (click)="seleccionarInquilino(user)" class="button is-link is-outlined mt-2">Editar Informacion</button>
+        <button (click)="eliminarInquilino(user.idInquilino)" class="button is-info is-outlined mt-2">Eliminar Inquilino</button>
+    </div>
 </div>
 
-<div *ngIf="inquilinoSeleccionado">
-    <h3>Editar Inquilino</h3>
+
+<div *ngIf="inquilinoSeleccionado" class="box">
+    <h3 class="subtitle is-5">Editar Inquilino</h3>
     <form (ngSubmit)="actualizarInquilino()">
-        <label>Nombre: </label>
-        <input type="text" name="nombre" [(ngModel)]="inquilinoSeleccionado.Nombre" required>
+        <label class="label">Nombre: </label>
+        <input class="input is-link" type="text" name="nombre" [(ngModel)]="inquilinoSeleccionado.Nombre" required>
         <br>
 
-        <label>Email: </label>
-        <input type="text" name="email" [(ngModel)]="inquilinoSeleccionado.Email" required>
+        <label class="label">Email: </label>
+        <input class="input is-link" type="text" name="email" [(ngModel)]="inquilinoSeleccionado.Email" required>
         <br>
 
-        <label>Telefono: </label>
-        <input type="text" name="telefono" [(ngModel)]="inquilinoSeleccionado.Telefono" required>
+        <label class="label">Telefono: </label>
+        <input class="input is-link" type="text" name="telefono" [(ngModel)]="inquilinoSeleccionado.Telefono" required pattern="^[0-9]{10}$"
+        maxlength="10"
+        (keypress)="soloNumeros($event)">
         <br>
 
-        <button type="submit">Actualizar</button>
-        <button type="button" (click)="cancelarEdicion()">Cancelar</button>
+        <button type="submit" class="button is-link is-hovered mt-2 mr-3">Actualizar</button>
+        <button type="button" (click)="cancelarEdicion()" class="button is-info is-dark mt-2">Cancelar</button>
     </form>
 </div>

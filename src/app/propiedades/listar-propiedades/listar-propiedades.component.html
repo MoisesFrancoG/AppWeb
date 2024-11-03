@@ -1,24 +1,29 @@
-<div *ngFor="let propiedad of propiedades">
-  <h3>Numero de Propiedad: {{propiedad.idPropiedad}}</h3>
-  <p>Direccion: {{propiedad.Direccion}}</p>
-  <p>Precio: {{propiedad.PrecioPeriodo}}</p>
-  <p>Periodo por Renta: {{propiedad.PeriodoRenta}}</p>
-  <p>Capacidad de Inquilinos: {{propiedad.Capacidad}}</p>
-  <p>Disponibilidad: {{propiedad.Disponibilidad}}</p>
-  
-  <div>
-    <label>Cambiar Disponibilidad:</label>
-    <select
-      [(ngModel)]="propiedad.Disponibilidad"
-      (change)="actualizarDisponibilidad(propiedad)"
-      class="form-control"
-    >
-      <option value="Disponible">Disponible</option>
-      <option value="No Disponible">No Disponible</option>
-    </select>
-  </div>
-  <button (click)="eliminarPropiedad(propiedad.idPropiedad)">
-    Eliminar
-  </button>
+<div id="cont">
+  <div *ngFor="let propiedad of propiedades" class="card">
+    <h3 class="subtitle is-5">Numero de Propiedad: {{propiedad.idPropiedad}}</h3>
+    <p><b>Direccion:</b>  {{propiedad.Direccion}}</p>
+    <p><b>Precio:</b>  {{propiedad.PrecioPeriodo}}</p>
+    <p><b>Periodo </b> por Renta: {{propiedad.PeriodoRenta}}</p>
+    <p><b>Capacidad </b> de Inquilinos: {{propiedad.Capacidad}}</p>
+    <p><b>Disponibilidad:</b>  {{propiedad.Disponibilidad}}</p>
+    
+    <div>
+      <label><b>Cambiar Disponibilidad:</b></label>
+      <div class="control">
+        <div class="select is-info">
+          <select
+            [(ngModel)]="propiedad.Disponibilidad"
+            (change)="actualizarDisponibilidad(propiedad)"
+            class="form-control"
+          >
+            <option value="Disponible">Disponible</option>
+            <option value="No Disponible">No Disponible</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <button (click)="eliminarPropiedad(propiedad.idPropiedad)" class="button is-dark is-link mt-2">
+      Eliminar
+    </button>
+  </div>  
 </div>
-  

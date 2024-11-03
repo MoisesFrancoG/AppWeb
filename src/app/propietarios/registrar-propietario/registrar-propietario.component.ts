@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-registrar-propietario',
   templateUrl: './registrar-propietario.component.html',
+  styleUrl: './registrar-propietario.component.css'
 })
 export class RegistrarPropietarioComponent {
   nuevoPropietario: Propietario = {
@@ -32,6 +33,16 @@ export class RegistrarPropietarioComponent {
         icon: 'error',
         title: 'Campos incompletos',
         text: 'Por favor, completa todos los campos obligatorios antes de agregar el propietario.',
+        confirmButtonText: 'Aceptar'
+      });
+      return;
+    }
+
+    if(this.nuevoPropietario.Telefono.length <10) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Numero telefonico Incompleto',
+        text: 'Por favor, ingresa un numero valido.',
         confirmButtonText: 'Aceptar'
       });
       return;

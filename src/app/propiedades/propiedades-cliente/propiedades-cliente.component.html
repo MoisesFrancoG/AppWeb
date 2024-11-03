@@ -1,12 +1,12 @@
-<div>
-    <h1>Propiedades</h1>
-    <div *ngFor="let prop of propiedades">
-        <p>Direccion de la Propiedad: {{prop.Direccion}}</p>
+<h1 class="title is-2 has-text-centered">Propiedades</h1>
+<div id="cont">
+    <div *ngFor="let prop of propiedades" class="card">
+        <p>Direccion de Propiedad: {{prop.Direccion}}</p>
         <p>Tipo de Propiedad: {{prop.TipoPropiedad}}</p>
         <p>Precio por Renta: {{prop.PrecioPeriodo}}</p>
         <p>Periodo por Renta: {{prop.PeriodoRenta}}</p>
         <p>Capacidad de Huespedes: {{prop.Capacidad}}</p>
-        <p>{{prop.Disponibilidad}}</p>
-        <button (click)="obtenerPropietario(prop.IdPropietario)">Mostrar Informacion Propietario</button>
+        <p>Estatus: {{prop.Disponibilidad}}</p>
+        <button (click)="obtenerPropietario(prop.IdPropietario)" class="button is-link my-2">Mostrar Informacion Propietario</button>
     </div>
 </div>

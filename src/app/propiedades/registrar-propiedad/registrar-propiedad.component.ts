@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-registrar-propiedad',
   templateUrl: './registrar-propiedad.component.html',
+  styleUrl:'./registrar-propiedad.component.css'
 })
 export class RegistrarPropiedadComponent implements OnInit {
   propietarios: Propietario[] = [];

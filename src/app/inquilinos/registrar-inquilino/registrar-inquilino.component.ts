@@ -41,6 +41,25 @@ export class RegistrarInquilinoComponent implements OnInit {
   }
 
   agregarInquilino() {
+    if(!this.nuevoInquilino.Nombre || !this.nuevoInquilino.Email || !this.nuevoInquilino.Telefono || this.nuevoInquilino.EstanciaRegistrada <= 0) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Campos incompletos',
+        text: 'Por favor, completa todos los campos obligatorios antes de agregar el inquilino.',
+        confirmButtonText: 'Aceptar'
+      });
+      return;
+    }
+
+    if(this.nuevoInquilino.Telefono.length < 10) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Numero telefonico Incompleto',
+        text: 'Por favor, ingresa un numero valido.',
+        confirmButtonText: 'Aceptar'
+      });
+      return;
+    }
     const today = new Date();
     const yyyy = today.getFullYear();
     const mm = String(today.getMonth() + 1).padStart(2, '0');

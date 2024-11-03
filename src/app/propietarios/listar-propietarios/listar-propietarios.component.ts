@@ -37,6 +37,24 @@ export class ListarPropietariosComponent implements OnInit{
 
     actualizarPropietario():void {
       if (this.propietarioSeleccionado) {
+        if (!this.propietarioSeleccionado.Nombre || !this.propietarioSeleccionado.Email || !this.propietarioSeleccionado.Telefono) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Campos incompletos',
+            text: 'Por favor, completa todos los campos obligatorios antes de actualizar el propietario.',
+            confirmButtonText: 'Aceptar'
+          });
+          return;
+        }
+        if(this.propietarioSeleccionado.Telefono.length < 10) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Numero telefonico Incompleto',
+            text: 'Por favor, ingresa un numero valido.',
+            confirmButtonText: 'Aceptar'
+          });
+          return;
+        }
         this.propietarioService.actualizarPropietario(this.propietarioSeleccionado.idPropietario, this.propietarioSeleccionado).subscribe(
           () => {
             this.obtenerPropietarios();
@@ -70,5 +88,12 @@ export class ListarPropietariosComponent implements OnInit{
           );
         }
       });
+    }
+
+    soloNumeros(event: KeyboardEvent) {
+      const charCode = event.key.charCodeAt(0);
+      if (charCode < 48 || charCode > 57) { // solo números (0-9)
+        event.preventDefault();
+      }
     }
 }

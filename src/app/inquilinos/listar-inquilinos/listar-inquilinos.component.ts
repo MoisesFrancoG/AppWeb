@@ -26,6 +26,13 @@ export class ListarInquilinosComponent implements OnInit{
     )
   }
 
+  soloNumeros(event: KeyboardEvent) {
+    const charCode = event.key.charCodeAt(0);
+    if (charCode < 48 || charCode > 57) { // solo números (0-9)
+      event.preventDefault();
+    }
+  }
+
   seleccionarInquilino(inquilino: Inquilino) : void {
     this.inquilinoSeleccionado = {...inquilino}
   }
@@ -35,6 +42,24 @@ export class ListarInquilinosComponent implements OnInit{
 
   actualizarInquilino() : void{
     if(this.inquilinoSeleccionado) {
+      if(!this.inquilinoSeleccionado.Nombre || !this.inquilinoSeleccionado.Email || !this.inquilinoSeleccionado.Telefono) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Campos incompletos',
+          text: 'Por favor, completa todos los campos obligatorios antes de actualizar el inquilino.',
+          confirmButtonText: 'Aceptar'
+        });
+        return;
+      }
+      if(this.inquilinoSeleccionado.Telefono.length < 10) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Numero telefonico Incompleto',
+          text: 'Por favor, ingresa un numero valido.',
+          confirmButtonText: 'Aceptar'
+        });
+        return;
+      }
       this.inquilinoService.actualizarInquilino(this.inquilinoSeleccionado.idInquilino,this.inquilinoSeleccionado).subscribe(
         () => {
           this.obtenerInquilinos()

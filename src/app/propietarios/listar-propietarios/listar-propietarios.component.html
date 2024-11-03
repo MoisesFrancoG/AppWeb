@@ -1,4 +1,4 @@
-<table border="1">
+<table class="table">
     <tr>
       <th>Id</th>
       <th>Nombre</th>
@@ -16,33 +16,35 @@
       <td>{{user.NumeroPropiedades}}</td>
       <td>{{user.FechaRegistro}}</td>
       <td>
-        <button (click)="seleccionarPropietario(user)">Editar</button>
-        <button (click)="eliminarPropietario(user.idPropietario)">Eliminar</button>
+        <button class="button is-info mr-5" (click)="seleccionarPropietario(user)">Editar</button>
+        <button class="button is-dark" (click)="eliminarPropietario(user.idPropietario)">Eliminar</button>
       </td>
     </tr>
   </table>
 
-  <div *ngIf="propietarioSeleccionado">
-    <h3>Editar Propietario</h3>
+  <div *ngIf="propietarioSeleccionado" class="box">
+    <h3 class="subtitle is-3">Editar Propietario</h3>
     <form (ngSubmit)="actualizarPropietario()">
       <div>
-        <label>Nombre:</label>
-        <input type="text" [(ngModel)]="propietarioSeleccionado.Nombre" name="nombre" required>
+        <label class="label">Nombre:</label>
+        <input class="input is-info" type="text" [(ngModel)]="propietarioSeleccionado.Nombre" name="nombre" required>
       </div>
       <div>
-        <label>Email:</label>
-        <input type="email" [(ngModel)]="propietarioSeleccionado.Email" name="email" required>
+        <label class="label">Email:</label>
+        <input class="input is-info" type="email" [(ngModel)]="propietarioSeleccionado.Email" name="email" required>
       </div>
       <div>
-        <label>Teléfono:</label>
-        <input type="text" [(ngModel)]="propietarioSeleccionado.Telefono" name="telefono" required>
+        <label class="label">Teléfono:</label>
+        <input class="input is-info" type="text" [(ngModel)]="propietarioSeleccionado.Telefono" name="telefono" required pattern="^[0-9]{10}$"
+        maxlength="10"
+        (keypress)="soloNumeros($event)">
       </div>
       <div>
-        <label>Número de Propiedades:</label>
-        <input type="number" [(ngModel)]="propietarioSeleccionado.NumeroPropiedades" name="numeroPropiedades" required>
+        <label class="label">Número de Propiedades:</label>
+        <input class="input is-info" type="number" [(ngModel)]="propietarioSeleccionado.NumeroPropiedades" name="numeroPropiedades" required min="1">
       </div>
-      <button type="submit">Actualizar</button>
-      <button type="button" (click)="cancelarEdicion()">Cancelar</button>
+      <button type="submit" class="button is-info is-dark mt-3 mr-5">Actualizar</button>
+      <button type="button" (click)="cancelarEdicion()" class="button is-dark mt-3">Cancelar</button>
     </form>
   </div>
   
