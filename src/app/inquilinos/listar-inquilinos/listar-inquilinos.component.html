@@ -1,4 +1,9 @@
-<h2 class="title is-1 has-text-centered">Usuarios Registrados</h2>
+<div id="img-cont">
+    <h2 class="title is-1 has-text-centered">Usuarios Registrados</h2>
+    <a [routerLink]="['/']" routerLinkActive="router-link-active" >
+      <img src="/casa.png" alt="icono home" width="100px">
+    </a>
+  </div>
 <div id="cont">
     <div *ngFor="let user of inquilinos" class="card">
         <ul>

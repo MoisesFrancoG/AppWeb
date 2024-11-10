@@ -1,3 +1,8 @@
+<div class="has-text-centered">
+  <a [routerLink]="['/']" routerLinkActive="router-link-active" >
+    <img src="/casa.png" alt="icono home" width="100px">
+  </a>
+</div>
 <div id="cont">
   <div *ngFor="let propiedad of propiedades" class="card">
     <h3 class="subtitle is-5">Numero de Propiedad: {{propiedad.idPropiedad}}</h3>

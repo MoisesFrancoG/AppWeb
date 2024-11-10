@@ -1,4 +1,9 @@
-<h1 class="title is-2 has-text-centered">Propiedades</h1>
+<div id="img-cont">
+    <h1 class="title is-2 has-text-centered">Propiedades</h1>
+    <a [routerLink]="['/']" routerLinkActive="router-link-active" >
+      <img src="/casa.png" alt="icono home" width="100px">
+    </a>
+  </div>
 <div id="cont">
     <div *ngFor="let prop of propiedades" class="card">
         <p>Direccion de Propiedad: {{prop.Direccion}}</p>

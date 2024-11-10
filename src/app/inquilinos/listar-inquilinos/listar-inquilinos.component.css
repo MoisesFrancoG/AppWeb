@@ -22,3 +22,10 @@
     flex-direction: column;
     width: 50%;
 }
+
+#img-cont {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

@@ -8,7 +8,7 @@ import { Propiedad } from './models/propiedad';
 })
 export class PropiedadService {
 
-  private apiUrl: string = 'http://localhost:8080/api/propiedades/';
+  private apiUrl: string = 'http://3.227.139.24:8080/api/propiedades/';
 
   constructor(private http: HttpClient) {}
 

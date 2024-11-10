@@ -8,7 +8,7 @@ import { Propietario } from './models/propietario';
 })
 export class PropietarioService {
 
-  private apiUrl: string = 'http://localhost:8080/api/propietarios/'
+  private apiUrl: string = 'http://3.227.139.24:8080/api/propietarios/'
   constructor(private http : HttpClient) { }
 
   obtenerPropietarios(): Observable<Propietario[]> {

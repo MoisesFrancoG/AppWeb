@@ -4,6 +4,7 @@ import { RegistrarPropiedadComponent } from './registrar-propiedad/registrar-pro
 import { FormsModule } from '@angular/forms';
 import { ListarPropiedadesComponent } from './listar-propiedades/listar-propiedades.component';
 import { PropiedadesClienteComponent } from './propiedades-cliente/propiedades-cliente.component';
+import { RouterLink } from '@angular/router';
 
 
 
@@ -15,10 +16,13 @@ import { PropiedadesClienteComponent } from './propiedades-cliente/propiedades-c
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterLink
   ],
   exports: [
-    RegistrarPropiedadComponent
+    RegistrarPropiedadComponent,
+    ListarPropiedadesComponent,
+    PropiedadesClienteComponent
   ]
 })
 export class PropiedadesModule { }

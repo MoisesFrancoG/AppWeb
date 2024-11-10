@@ -8,7 +8,7 @@ import { Inquilino } from './models/inquilino';
 })
 export class InquilinoService {
 
-  private apiUrl: string = 'http://localhost:8080/api/inquilinos/'
+  private apiUrl: string = 'http://3.227.139.24:8080/api/inquilinos/'
   constructor(private http :HttpClient ) { }
 
   obtenerInquilinos(): Observable<Inquilino[]> {

@@ -1,4 +1,9 @@
 <div id="cont-reg">
+  <div id="img-cont">
+    <a [routerLink]="['/']" routerLinkActive="router-link-active" >
+      <img src="/casa.png" alt="icono home" width="100px">
+    </a>
+  </div>
 <form (ngSubmit)="agregarPropietario()" class="box">
   <label class="label">Nombre:</label>
   <input class="input is-link"
